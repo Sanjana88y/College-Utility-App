@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Teacher Panel 👩‍🏫</h2>
+<p id="welcome" style="font-size: 1.1rem; margin-bottom: 16px;">Loading...</p>
+
+<div class="cards">
+  <button onclick="openSection('notes')">Upload Notes</button>
+  <button onclick="openSection('assignment')">Add Assignment</button>
+  <button onclick="openSection('timetable')">Update Timetable</button>
+  <button onclick="openSection('result')">Add Results</button>
+  <button onclick="openSection('events')">Post Event</button>
+  <button onclick="openSection('attendance')">Mark Attendance</button>
+  <button onclick="openSection('notice')">Send Notice</button>
+  <button onclick="logout()">Logout</button>
+</div>
+<button onclick="openSection('timetable')">Update Timetable</button>
+<button onclick="openSection('result')">Add Results</button>
+<button onclick="openSection('events')">Post Event</button>
+<button onclick="openSection('attendance')">Mark Attendance</button>
+<button onclick="openSection('notice')">Send Notice</button>
+<button onclick="logout()">Logout</button>
+
+<div id="notes" class="section">
+<h3>Upload Notes</h3>
+
+<input id="noteTitle" placeholder="Note title">
+<input id="noteInput" placeholder="Enter note content">
+<button onclick="addNote()">Upload</button>
+
+</div>
+
+<div id="assignment" class="section">
+<h3>Assignment</h3>
+
+<input id="assignInput" placeholder="Enter assignment">
+<button onclick="addAssignment()">Add</button>
+
+<div id="assignmentData"></div>
+
+</div>
+
+<div id="timetable" class="section">
+<h3>Timetable</h3>
+
+<input id="timetableDay" placeholder="Day">
+<input id="timetableSubject" placeholder="Subject">
+<button onclick="addTimetable()">Add</button>
+
+<div id="timetableData"></div>
+
+</div>
+
+<div id="result" class="section">
+<h3>Results</h3>
+
+<input id="resultStudent" placeholder="Student email">
+<input id="resultSubject" placeholder="Subject">
+<input id="resultMarks" placeholder="Marks">
+<button onclick="addResult()">Save</button>
+
+<div id="resultData"></div>
+
+</div>
+
+<div id="events" class="section">
+<h3>Events</h3>
+
+<input id="eventTitle" placeholder="Event title">
+<input id="eventDescription" placeholder="Event description">
+<button onclick="addEvent()">Post</button>
+
+<div id="eventData"></div>
+
+</div>
+
+<div id="attendance" class="section">
+<h3>Attendance</h3>
+
+<input id="attStudent" placeholder="Student email">
+<select id="attStatus">
+  <option value="Present">Present</option>
+  <option value="Absent">Absent</option>
+  <option value="Leave">Leave</option>
+</select>
+<button onclick="markAttendance()">Record</button>
+
+<div id="attendanceData"></div>
+
+</div>
+
+<div id="notice" class="section">
+<h3>Notice</h3>
+
+<input id="noticeInput" placeholder="Enter notice">
+<button onclick="addNotice()">Send</button>
+
+<div id="noticeData"></div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = requireAuth(["teacher"]);
+    if (!user) return;
+    document.getElementById("welcome").textContent = `Welcome ${user.name} (${user.role})`;
+    openSection("notes");
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

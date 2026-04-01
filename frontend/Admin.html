@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Admin Panel 👨‍💼</h2>
+<p id="welcome" style="font-size: 1.1rem; margin-bottom: 16px;">Loading...</p>
+
+<div class="cards">
+  <button onclick="openSection('users')">Manage Users</button>
+  <button onclick="openSection('pending')">Pending Approvals</button>
+  <button onclick="openSection('fees')">Fee Records</button>
+  <button onclick="openSection('events')">Announcements</button>
+  <button onclick="openSection('system')">System Monitor</button>
+  <button onclick="logout()">Logout</button>
+</div>
+<button onclick="openSection('fees')">Fee Records</button>
+<button onclick="openSection('events')">Announcements</button>
+<button onclick="openSection('system')">System Monitor</button>
+<button onclick="logout()">Logout</button>
+
+<div id="users" class="section">
+<h3>Users</h3>
+<button onclick="getUsers()">Load Users</button>
+<ul id="userList"></ul>
+</div>
+
+<div id="pending" class="section">
+<h3>Pending Registrations</h3>
+<button onclick="getPendingUsers()">Load Pending</button>
+<ul id="pendingList"></ul>
+</div>
+
+<div id="fees" class="section">
+<h3>Fee Records</h3>
+<pre id="feeRecords"></pre>
+</div>
+
+<div id="events" class="section">
+<h3>Announcements</h3>
+<div id="eventData"></div>
+</div>
+
+<div id="system" class="section">
+<h3>System Status</h3>
+<p>System Running Smoothly ✅</p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = requireAuth(["admin"]);
+    if (!user) return;
+    document.getElementById("welcome").textContent = `Welcome ${user.name} (${user.role})`;
+    openSection("users");
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

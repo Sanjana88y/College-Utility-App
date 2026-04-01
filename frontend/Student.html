@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Student Dashboard 👨‍🎓</h2>
+<p id="welcome" style="font-size: 1.1rem; margin-bottom: 16px;">Loading...</p>
+
+<div class="cards">
+  <button onclick="openSection('notes')">Notes</button>
+  <button onclick="openSection('assignment')">Assignments</button>
+  <button onclick="openSection('timetable')">Timetable</button>
+  <button onclick="openSection('result')">Result</button>
+  <button onclick="openSection('events')">Events</button>
+  <button onclick="openSection('fees')">Fees</button>
+  <button onclick="openSection('notice')">Notices</button>
+  <button onclick="openSection('attendance')">Attendance</button>
+  <button onclick="logout()">Logout</button>
+</div>
+<button onclick="openSection('timetable')">Timetable</button>
+<button onclick="openSection('result')">Result</button>
+<button onclick="openSection('events')">Events</button>
+<button onclick="openSection('fees')">Fees</button>
+<button onclick="openSection('notice')">Notices</button>
+<button onclick="openSection('attendance')">Attendance</button>
+<button onclick="logout()">Logout</button>
+
+<div id="notes" class="section">
+<h3>Notes</h3>
+<button onclick="getNotes()">Load Notes</button>
+<div id="notesData"></div>
+</div>
+
+<div id="assignment" class="section">
+<h3>Assignments</h3>
+<button onclick="getAssignments()">Load Assignments</button>
+<div id="assignmentData"></div>
+</div>
+
+<div id="timetable" class="section">
+<h3>Timetable</h3>
+<button onclick="getTimetable()">Load Timetable</button>
+<div id="timetableData"></div>
+</div>
+
+<div id="result" class="section">
+<h3>Result</h3>
+<button onclick="getResults()">Load Results</button>
+<div id="resultData"></div>
+</div>
+
+<div id="events" class="section">
+<h3>Events</h3>
+<button onclick="getEvents()">Load Events</button>
+<div id="eventData"></div>
+</div>
+
+<div id="fees" class="section">
+<h3>Fees</h3>
+<button onclick="payFees()">Pay Fees</button>
+<p id="feeStatus">Pending</p>
+<pre id="feeRecords"></pre>
+</div>
+
+<div id="notice" class="section">
+<h3>Notices</h3>
+<div id="noticeData"></div>
+</div>
+
+<div id="attendance" class="section">
+<h3>Attendance</h3>
+<button onclick="getAttendance()">Load Attendance</button>
+<div id="attendanceData"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const user = requireAuth(["student"]);
+    if (!user) return;
+    document.getElementById("welcome").textContent = `Welcome ${user.name} (${user.role})`;
+    openSection("notes");
+  });
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>

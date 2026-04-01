@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+<h2>Dashboard</h2>
+
+<div class="cards">
+
+<button onclick="openSection('notes')">Notes</button>
+<button onclick="openSection('assignment')">Assignment</button>
+<button onclick="openSection('result')">Result</button>
+<button onclick="openSection('fees')">Fees</button>
+<button onclick="openSection('notice')">Notice</button>
+
+</div>
+
+<!-- Notes Section -->
+<div id="notes" class="section">
+<h3>Notes</h3>
+<input id="title" placeholder="Title">
+<input id="content" placeholder="Content">
+<button onclick="addNote()">Add</button>
+<ul id="data"></ul>
+</div>
+
+<!-- Assignment -->
+<div id="assignment" class="section">
+<h3>Assignment</h3>
+
+<input id="assg" placeholder="Enter Assignment">
+<button onclick="addAssignment()">Add</button>
+
+<ul id="assgList"></ul>
+</div>
+
+<!-- Result -->
+<div id="result" class="section">
+<h3>Result</h3>
+<p>Your result will be shown here</p>
+</div>
+
+<!-- Fees -->
+<div id="fees" class="section">
+<h3>Fees</h3>
+<p>Fees status: Paid</p>
+</div>
+
+<!-- Notice -->
+<div id="notice" class="section">
+<h3>Notice</h3>
+
+<input id="noticeText" placeholder="Enter Notice">
+<button onclick="addNotice()">Add</button>
+
+<ul id="noticeList"></ul>
+</div>
+ <!---- Result Section -->
+<div id="result" class="section">
+<h3>Result</h3>
+
+<input id="marks" placeholder="Enter Marks">
+<button onclick="showResult()">Show</button>
+
+<p id="res"></p>
+</div>
+<!-- Fees Section---->
+<div id="fees" class="section">
+<h3>Fees</h3>
+
+<button onclick="payFees()">Pay Fees</button>
+
+<p id="feeStatus">Pending</p>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
